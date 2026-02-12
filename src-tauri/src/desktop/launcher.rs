@@ -40,7 +40,7 @@ pub fn launch_rustdesk_app(device_id: &str) -> Result<(), String> {
     }
 }
 
-pub fn launch_moonlight_app(_host_ip: &str) -> Result<(), String> {
+pub fn launch_moonlight_app(host_ip: &str) -> Result<(), String> {
     #[cfg(target_os = "macos")]
     {
         Command::new("open")

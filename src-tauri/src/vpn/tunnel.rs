@@ -223,6 +223,24 @@ impl VpnManager {
                             }
                         }
                     }
+                    #[cfg(windows)]
+                    {
+                        let ip_output = Command::new("netsh")
+                            .args(["interface", "ip", "show", "addresses", iface])
+                            .output()
+                            .ok();
+                        if let Some(ip_out) = ip_output {
+                            let text = String::from_utf8_lossy(&ip_out.stdout);
+                            for line in text.lines() {
+                                let trimmed = line.trim();
+                                if trimmed.contains("IP Address") || trimmed.contains("IP 地址") {
+                                    if let Some(ip) = trimmed.rsplit_once(':').or_else(|| trimmed.rsplit_once('：')) {
+                                        return Some(ip.1.trim().to_string());
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
