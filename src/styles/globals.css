@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-surface-0: #ffffff;
+  --color-surface-1: #f8f9fa;
+  --color-surface-2: #f0f1f3;
+  --color-surface-3: #e0e2e6;
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+  --color-vpn-on: #16a34a;
+  --color-vpn-off: #64748b;
+  --color-vpn-connecting: #f59e0b;
+  --color-text-primary: #1a1a2e;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+}
+
+.dark {
+  --color-surface-0: #0a0a0f;
+  --color-surface-1: #12121a;
+  --color-surface-2: #1a1a25;
+  --color-surface-3: #222233;
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+  --color-vpn-on: #22c55e;
+  --color-vpn-off: #64748b;
+  --color-vpn-connecting: #f59e0b;
+  --color-text-primary: #e4e4e7;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Drag region for window title bar */
+[data-tauri-drag-region] {
+  -webkit-app-region: drag;
+}

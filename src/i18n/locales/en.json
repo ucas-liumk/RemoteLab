@@ -1,0 +1,75 @@
+{
+  "dashboard": {
+    "devices": "Devices",
+    "addDevice": "Add Device",
+    "refresh": "Refresh",
+    "noDevices": "No devices configured.",
+    "noDevicesHint": "Click \"Add Device\" to add your first device.",
+    "addNewDevice": "Add New Device",
+    "deviceName": "Device name",
+    "sshHost": "SSH host (hostname or IP)",
+    "sshUser": "SSH user",
+    "sshPort": "SSH port (default: 22)",
+    "cancel": "Cancel",
+    "add": "Add"
+  },
+  "vpn": {
+    "connected": "VPN Connected",
+    "off": "VPN Off",
+    "connecting": "Connecting..."
+  },
+  "device": {
+    "host": "Host",
+    "user": "User",
+    "ssh": "SSH",
+    "desktop": "Desktop",
+    "files": "Files",
+    "remove": "Remove device"
+  },
+  "desktop": {
+    "detectingGpu": "Detecting GPU capabilities...",
+    "settingUp": "Setting up remote desktop...",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "connectionFailed": "Connection failed",
+    "retry": "Retry",
+    "close": "Close",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit fullscreen"
+  },
+  "files": {
+    "upload": "Upload",
+    "download": "Download",
+    "newFolder": "New Folder",
+    "delete": "Delete",
+    "refresh": "Refresh",
+    "emptyDir": "Empty directory",
+    "folderName": "Folder name",
+    "create": "Create",
+    "confirmDelete": "Delete \"{{name}}\"?",
+    "name": "Name",
+    "size": "Size",
+    "modified": "Modified",
+    "permissions": "Permissions"
+  },
+  "settings": {
+    "title": "Settings",
+    "back": "Back",
+    "wireguard": "WireGuard Configuration",
+    "configPath": "Config File Path",
+    "import": "Import",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "deviceConfig": "Device Configuration",
+    "exportConfig": "Export Config",
+    "importConfig": "Import Config",
+    "exportSuccess": "Config exported successfully",
+    "importSuccess": "Config imported successfully",
+    "sshKeys": "SSH Keys",
+    "encryption": "Config Encryption",
+    "about": "About RemoteLab",
+    "aboutDesc": "Cross-platform remote lab management application"
+  }
+}

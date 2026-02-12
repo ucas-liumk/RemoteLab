@@ -1,0 +1,75 @@
+{
+  "dashboard": {
+    "devices": "设备",
+    "addDevice": "添加设备",
+    "refresh": "刷新",
+    "noDevices": "暂未配置设备",
+    "noDevicesHint": "点击「添加设备」来添加你的第一台设备",
+    "addNewDevice": "添加新设备",
+    "deviceName": "设备名称",
+    "sshHost": "SSH 主机（主机名或 IP）",
+    "sshUser": "SSH 用户名",
+    "sshPort": "SSH 端口（默认：22）",
+    "cancel": "取消",
+    "add": "添加"
+  },
+  "vpn": {
+    "connected": "VPN 已连接",
+    "off": "VPN 未连接",
+    "connecting": "连接中..."
+  },
+  "device": {
+    "host": "主机",
+    "user": "用户",
+    "ssh": "SSH",
+    "desktop": "桌面",
+    "files": "文件",
+    "remove": "删除设备"
+  },
+  "desktop": {
+    "detectingGpu": "正在检测 GPU...",
+    "settingUp": "正在配置远程桌面...",
+    "connected": "已连接",
+    "disconnected": "已断开",
+    "connectionFailed": "连接失败",
+    "retry": "重试",
+    "close": "关闭",
+    "fullscreen": "全屏",
+    "exitFullscreen": "退出全屏"
+  },
+  "files": {
+    "upload": "上传",
+    "download": "下载",
+    "newFolder": "新建文件夹",
+    "delete": "删除",
+    "refresh": "刷新",
+    "emptyDir": "空目录",
+    "folderName": "文件夹名称",
+    "create": "创建",
+    "confirmDelete": "确定删除「{{name}}」？",
+    "name": "名称",
+    "size": "大小",
+    "modified": "修改时间",
+    "permissions": "权限"
+  },
+  "settings": {
+    "title": "设置",
+    "back": "返回",
+    "wireguard": "WireGuard 配置",
+    "configPath": "配置文件路径",
+    "import": "导入",
+    "language": "语言",
+    "theme": "主题",
+    "dark": "深色",
+    "light": "浅色",
+    "deviceConfig": "设备配置",
+    "exportConfig": "导出配置",
+    "importConfig": "导入配置",
+    "exportSuccess": "配置导出成功",
+    "importSuccess": "配置导入成功",
+    "sshKeys": "SSH 密钥",
+    "encryption": "配置加密",
+    "about": "关于 RemoteLab",
+    "aboutDesc": "跨平台远程实验室管理应用"
+  }
+}
