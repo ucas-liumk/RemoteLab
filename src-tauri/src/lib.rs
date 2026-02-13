@@ -7,8 +7,33 @@ mod terminal;
 mod desktop;
 mod filetransfer;
 mod sshkeys;
+mod transport;
+mod quality;
+mod capture;
+mod encoder;
+mod platform;
 
 use tauri::Manager;
+
+/// 初始化流媒体管道
+async fn init_streaming_pipeline(app: &tauri::App) -> Result<(), Box<dyn std::error::Error>> {
+    // 检测 GPU 并选择最佳配置
+    let gpu_manager = platform::create_gpu_manager()?;
+    let gpu = gpu_manager.get_selected_gpu();
+    
+    if let Some(gpu) = gpu {
+        log::info!("Using GPU: {} ({:?})", gpu.name, gpu.vendor);
+        log::info!("  - NVENC: {}", gpu.supports_nvenc);
+        log::info!("  - NvFBC: {}", gpu.supports_nvfbc);
+    } else {
+        log::warn!("No GPU detected, falling back to software encoding");
+    }
+    
+    // 初始化各模块...
+    // TODO: 启动流媒体服务
+    
+    Ok(())
+}
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -32,8 +57,17 @@ pub fn run() {
             }
             app.manage(vpn);
             app.manage(desktop::VncProxy::new());
+            
+            // 初始化流媒体管道
+            let app_handle = app.handle().clone();
+            tauri::async_runtime::spawn(async move {
+                if let Err(e) = init_streaming_pipeline(&app_handle).await {
+                    log::error!("Failed to initialize streaming pipeline: {}", e);
+                }
+            });
 
-            log::info!("RemoteLab started");
+            log::info!("RemoteLab Ultra started");
+            log::info!("Target latency: < 16ms");
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![

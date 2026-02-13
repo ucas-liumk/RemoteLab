@@ -53,3 +53,28 @@ base64 = "0.22"
 aes-gcm = "0.10"
 argon2 = "0.5"
 rand = "0.8"
+
+# Screen capture dependencies
+cuda-driver-sys = { version = "0.3", optional = true }
+drm-sys = { version = "0.2", optional = true }
+libc = "0.2"
+thiserror = "1"
+
+# Platform detection
+sysinfo = "0.30"
+
+# QUIC/WebTransport transport layer
+quinn = "0.11"
+rustls = { version = "0.23", default-features = false, features = ["ring"] }
+rustls-pemfile = "2"
+bytes = "1"
+async-trait = "0.1"
+wtransport = { version = "0.5", optional = true }
+rcgen = "0.13"
+
+[features]
+default = []
+cuda-driver-sys = ["dep:cuda-driver-sys"]
+drm-sys = ["dep:drm-sys"]
+wtransport = ["dep:wtransport"]
+russh = []
