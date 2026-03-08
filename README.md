@@ -1,6 +1,10 @@
 # RemoteLab
 
-A modern, cross-platform remote lab management desktop application.
+**RemoteLab** is an open-source infrastructure toolkit designed to support remote robotics experimentation and automation workflows.
+
+It enables researchers and engineers to manage remote devices, orchestrate experiments, collect data, and automate development pipelines for robotics systems — developed as part of robotics research workflows.
+
+The project aims to improve **reproducibility**, **accessibility**, and **scalability** in robotics research environments.
 
 [![Tauri 2.0](https://img.shields.io/badge/Tauri-2.0-blue?logo=tauri)](https://tauri.app)
 [![React](https://img.shields.io/badge/React-18-61dafb?logo=react)](https://react.dev)
@@ -8,22 +12,69 @@ A modern, cross-platform remote lab management desktop application.
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript)](https://www.typescriptlang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Features
+## Key Features
 
-- **SSH Terminal** — Full-featured terminal powered by xterm.js with multi-tab support for managing multiple sessions simultaneously.
-- **Remote Desktop** — Automatic GPU detection: uses NVENC H.264 streaming via Sunshine when available, with VNC fallback for broad compatibility.
-- **File Manager** — SFTP-based file browser with support for upload, download, create, and delete operations.
-- **WireGuard VPN** — Optional VPN toggle with real-time latency monitoring for secure remote connections.
-- **SSH Key Management** — Generate, import, and deploy SSH keys directly from the application.
-- **Config Import/Export** — JSON-based backup and restore for easy configuration migration across machines.
-- **Multi-language** — Full support for English and Chinese interfaces.
-- **Light/Dark Theme** — Switchable themes to match your preference.
-- **Config Encryption** — Optional AES-256-GCM password protection for sensitive configuration data.
-- **Cross-platform** — Native builds for macOS, Linux, and Windows.
+- **SSH Terminal** — Full-featured terminal powered by xterm.js with multi-tab support for managing multiple remote sessions simultaneously
+- **Remote Desktop** — Automatic GPU detection: uses NVENC H.264 streaming via Sunshine when available, with VNC fallback for broad compatibility
+- **File Manager** — SFTP-based file browser with support for upload, download, create, and delete operations
+- **WireGuard VPN** — Optional VPN toggle with real-time latency monitoring for secure remote connections
+- **SSH Key Management** — Generate, import, and deploy SSH keys directly from the application
+- **Config Import/Export** — JSON-based backup and restore for easy configuration migration across machines
+- **Config Encryption** — Optional AES-256-GCM password protection for sensitive configuration data
+- **Multi-language** — Full support for English and Chinese interfaces
+- **Light/Dark Theme** — Switchable themes to match your preference
+- **Cross-platform** — Native builds for macOS, Linux, and Windows
 
-## Screenshots
+RemoteLab is particularly useful for:
 
-<!-- Screenshots coming soon -->
+- **Robotics laboratories** requiring remote access to hardware platforms
+- **Distributed research teams** collaborating across institutions
+- **Remote hardware experimentation** with real-time monitoring
+- **Automation testing pipelines** for robotics development workflows
+
+## Architecture
+
+RemoteLab provides a modular architecture that allows robotics systems and research infrastructure to integrate with remote experiment workflows.
+
+```
+┌─────────────────────────────────────────────────┐
+│                  RemoteLab App                   │
+├──────────────┬──────────────┬────────────────────┤
+│ SSH Terminal │Remote Desktop│   File Manager     │
+├──────────────┴──────────────┴────────────────────┤
+│         Experiment Control Interface             │
+├──────────────────────────────────────────────────┤
+│      Remote Device Management (Tauri + Rust)     │
+├──────────────────────────────────────────────────┤
+│   Data Collection  │  Logging & Monitoring       │
+├────────────────────┴─────────────────────────────┤
+│     Automation & Workflow Management Layer       │
+└──────────────────────────────────────────────────┘
+```
+
+### Frontend
+
+- **React 18** with **TypeScript** for the UI layer
+- **Tailwind CSS** for utility-first styling
+- **Vite** as the build tool and dev server
+- **xterm.js** for terminal emulation
+- **react-vnc** for VNC-based remote desktop
+
+### Backend
+
+- **Rust** for the native backend
+- **Tauri 2.0** as the application framework
+- **tokio** for async runtime
+- **serde** for serialization/deserialization
+- **portable-pty** for pseudo-terminal management
+
+## Example Use Cases
+
+- Running remote robotics experiments from cloud environments
+- Automating experiment pipelines for robotics research
+- Managing multiple robots across distributed labs
+- Collecting experiment logs and telemetry data
+- Remote debugging and monitoring of robotics platforms
 
 ## Installation
 
@@ -52,6 +103,8 @@ Download the latest release for your platform from the [Releases](https://github
 ### Development
 
 ```bash
+git clone https://github.com/ucas-liumk/RemoteLab.git
+cd RemoteLab
 npm install
 npm run tauri dev
 ```
@@ -66,8 +119,6 @@ npm run tauri build
 
 **macOS**
 
-Install Xcode Command Line Tools:
-
 ```bash
 xcode-select --install
 ```
@@ -75,8 +126,6 @@ xcode-select --install
 Produces `.dmg` and `.app` bundles.
 
 **Linux**
-
-Install required system dependencies:
 
 ```bash
 sudo apt-get update
@@ -88,41 +137,32 @@ Produces `.deb` and `.AppImage` bundles.
 
 **Windows**
 
-Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) with the "C++ build tools" workload.
+Install [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) with the "C++ build tools" workload. Produces `.msi` and `.exe` installers.
 
-Produces `.msi` and `.exe` installers.
+## Project Goals
 
-## Usage
+RemoteLab focuses on building infrastructure that supports:
 
-1. **Launch** the application.
-2. **Add Device** — Click the add button and enter your remote host details (hostname, port, credentials).
-3. **Connect** — Use SSH Terminal, Remote Desktop, or File Manager to interact with your device.
+- **Reproducible robotics experiments** with consistent remote environments
+- **Scalable research infrastructure** for growing lab networks
+- **Remote hardware access** with low-latency streaming
+- **Automation of robotics workflows** from development to deployment
 
-## Architecture
+## Roadmap
 
-### Frontend
+Planned improvements include:
 
-- **React 18** with **TypeScript** for the UI layer
-- **Tailwind CSS** for utility-first styling
-- **Vite** as the build tool and dev server
-- **xterm.js** for terminal emulation
-- **react-vnc** for VNC-based remote desktop
+- Experiment workflow automation and scheduling
+- Integration with robotics simulation tools (Gazebo, Isaac Sim)
+- AI-assisted experiment scripting
+- Experiment analytics and visualization tools
+- Plugin system for custom robotics integrations
 
-### Backend
+## Contributing
 
-- **Rust** for the native backend
-- **Tauri 2.0** as the application framework
-- **tokio** for async runtime
-- **serde** for serialization/deserialization
-- **portable-pty** for pseudo-terminal management
+Contributions are welcome from the robotics and research community. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-### Configuration
-
-Application configuration is stored at:
-
-```
-~/.config/remotelab/config.json
-```
+Maintainers review pull requests and issues regularly. Please open an issue to discuss major changes before submitting PRs.
 
 ## License
 
